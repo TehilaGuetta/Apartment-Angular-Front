@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-sm bg-light">
+
+  <div class="container-fluid">
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <!-- הרשם -->
+        <a class="nav-link" routerLink="signup">register</a> 
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="login">login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="homepage">home page</a>
+      </li>
+
+
+
+      <li class="nav-item" *ngIf="advertiserService.connect">
+        <a class="nav-link" >connect</a>
+      </li>
+
+      <li *ngIf="advertiserService.connect" class="nav-item">
+        <a class="nav-link">private area</a>
+      </li>
+    </ul>
+  </div>
+
+
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

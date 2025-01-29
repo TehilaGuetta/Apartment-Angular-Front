@@ -1,0 +1,64 @@
+<div class="container">
+<h3>welcome</h3>
+    <form class="form-group" #myform=ngForm (ngSubmit)="save()">
+        <input type="text" class="form-control" placeholder="code" name="id" #myid="ngModel" [(ngModel)]="advertiser.id"
+            required pattern="[0-9]*">
+
+        <div class="alert-danger" *ngIf="myid.invalid && (myid.touched ||myid.dirty)"> 
+            <p *ngIf="myid.errors?.['required']">code is required.</p>
+            <p *ngIf="myid.errors?.['pattern']">code must be numbers.</p>
+
+
+        </div>
+
+        <input type="text" class="form-control" placeholder="First name" [(ngModel)]="advertiser.fname" name="f" required minlength="2" maxlength="20" pattern="[A-Za-zא-ת]*" #firstnameInput=ngModel>
+
+<div class="alert-danger" *ngIf="firstnameInput.invalid && (firstnameInput.touched || firstnameInput.dirty)">
+    <p *ngIf="firstnameInput.errors?.['required']">First name is required.</p>
+  <p *ngIf="firstnameInput.errors?.['minlength']">First name is too short.</p>
+  <p *ngIf="firstnameInput.errors?.['pattern']">First name must contain only letters.</p>
+</div> 
+
+
+
+        <input type="text" class="form-control" placeholder="lname" #lastname="ngModel" name="l" required
+            [(ngModel)]="advertiser.lname" minlength="2" maxlength="20" pattern="[A-Za-zא-ת]*">
+
+        <div class="alert-danger" *ngIf="lastname.invalid && (lastname.touched ||lastname.dirty)">
+            <p *ngIf="lastname.errors?.['required']">Last name is required.</p>
+            <p *ngIf="lastname.errors?.['minlength']">Last name is to short</p>
+            <p *ngIf="lastname.errors?.['pattern']">Last name must be letter</p>
+        </div>
+
+        <input type="email" class="form-control"required placeholder="email" #email="ngModel" name="e"
+            [(ngModel)]="advertiser.email" pattern="^[A-Za-z0-9]+@[A-Za-z0-9.-]+\.[A-Za-z]+$">
+            <div class="alert-danger" *ngIf="email.invalid && (email.touched ||email.dirty)"> 
+                <p *ngIf="email.errors?.['required']">email is required.</p>
+                <p *ngIf="email.errors?.['pattern']">email is not valid.</p>
+            </div>
+        <input type="password"required class="form-control" placeholder="password" #pass="ngModel" name="p" [(ngModel)]="advertiser.password"> 
+
+        <div class="alert-danger" *ngIf="pass.invalid && (pass.touched ||pass.dirty)"> password is required
+        </div>
+
+        <input type="text" class="form-control" placeholder="phone1" #phone1="ngModel" name="ph1"
+            [(ngModel)]="advertiser.phone1" minlength="10" maxlength="10" pattern="[0-9]*">
+
+
+            <div class="alert-danger" *ngIf="phone1.invalid && (phone1.touched ||phone1.dirty)">
+                <p *ngIf="phone1.errors?.['minlength']">must be 10 numbers</p>
+                <p *ngIf="phone1.errors?.['pattern']">must be numbers</p>
+            </div>
+
+
+        <input type="text" class="form-control" placeholder="phone2" #phone2="ngModel" name="ph2"
+            [(ngModel)]="advertiser.phone2">
+            <div class="alert-danger" *ngIf="phone2.invalid && (phone2.touched ||phone2.dirty)">
+                <p *ngIf="phone2.errors?.['minlength']">must be 10 numbers</p>
+                <p *ngIf="phone2.errors?.['pattern']">must be numbers</p>
+            </div>
+        <input type="submit" class="btn" [disabled]="!myform.valid">
+
+    </form>
+</div>
+<div *ngIf="reg"> register!!!!!!!</div>

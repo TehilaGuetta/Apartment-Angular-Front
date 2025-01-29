@@ -1,0 +1,10 @@
+<div class="container">
+<h3>login</h3>
+<input type="email" class="form-control" placeholder="email" [(ngModel)]="email"><br>
+<input type="password"class="form-control" placeholder="password" [(ngModel)]="pass"><br>
+<button appDir class="btn btn-primary" class="form-control"(click)="login()">login</button><br>
+</div>
+
+<div *ngIf="advertiserService.connect">login!!!!!!!!!!</div>
+<div *ngIf="nlog">error in password or email</div>
+<div *ngIf="log && !advertiserService.connect">not valid</div>

@@ -1,0 +1,66 @@
+<div class="container">
+  <br/>
+  <div class="card container" style="background-color: rgba(194, 242, 242, 0.799);">
+    <h1>Filters</h1>
+
+    <div *ngIf="showFilters">
+      <button (click)="showFilters = false; showCity= true" style="width: 200px; margin: 20px;" class="btn btn-primary">Filter By City</button>
+      <button (click)="showFilters = false; showPrice= true" style="width: 200px; margin: 20px;" class="btn btn-primary">Filter By Price</button>
+      <button (click)="showFilters = false; showIdAdv= true" style="width: 200px; margin: 20px;"  class="btn btn-primary">Filter By Advertiser Name</button>
+    </div>
+    
+    <div class="container card form-group" *ngIf="showCity">
+      <h2>Filter By City</h2>
+      <input type="text" class="form-control" placeholder="Enter city name" [(ngModel)]="city"/>
+      <br/>
+      <button  appDir  class="btn btn-primary" (click)="FilterByCity()">Filter</button>
+    </div>
+
+    <div class="container card form-group"  *ngIf="showPrice">
+      <h2>Filter By Price</h2>
+      <h3>Enter min price: </h3>
+      <input type="number" class="form-control" [(ngModel)]="minPrice"/>
+      <h3>Enter max price: </h3>
+      <input type="number" class="form-control" [(ngModel)]="maxPrice"/>
+      <br/>
+      <button appDir class="btn btn-primary" (click)="FilterByPrice()">Filter</button>
+    </div>
+
+    <br/>
+    <div class="container card form-group" *ngIf="showIdAdv">
+      <h2>Filter By Advertiser Name</h2>
+      <h3>Enter advertiser name: </h3>
+      <input type="text" class="form-control" placeholder="Enter advertiser first name" [(ngModel)]="fname"/>
+      <br/>
+      <input type="text" class="form-control" placeholder="Enter advertiser last name" [(ngModel)]="lname"/>
+      <br/>
+      <button appDir   class="btn btn-primary" (click)="FilterByIdAdvertiser()">Filter</button>
+    </div>
+  </div>
+
+
+
+  <br/>
+  <div class="container" style="background-color: rgb(217, 225, 225);">
+    <h1>Show</h1>
+    
+    <div class="row">
+      <div class="col-sm-3"  *ngFor="let apar of apservise.arrap" style="margin: 10px;">
+        <div class="card" style="height: 520px;padding: 10px;background-color: rgb(181, 221, 221);">
+          <h1>{{apar.name}}</h1>
+          <h3>{{apar.description}}</h3>
+          <img src="http://localhost:8080/{{apar.img}}"/>
+          <h3>city: {{apar.city}}</h3>
+          <h3>address: {{apar.address}}</h3>
+          <h3>numOfBeds: {{apar.numbed|pipe:'numOfBeds'}}</h3>
+          <h3>additives: {{apar.additives|pipe:'additives'}}</h3>
+          <h3>price: {{apar.price|pipe:'price'}}</h3>
+          <!-- <div *ngIf="b.isBorrowed" style="background-color: red;position: fixed;"><h3>Borrowed!</h3></div> -->
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
